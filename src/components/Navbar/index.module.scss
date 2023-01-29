@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #0c0c0c;
+  width: 100vw;
+  height: 121px;
+
+  input {
+    border-radius: 32px;
+    background-color: #d9d9d9;
+    color: #000;
+
+    border: none;
+    outline: none;
+
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    min-width: 270px;
+    max-width: 700px;
+
+    &::placeholder {
+      color: #000;
+    }
+  }
+}
