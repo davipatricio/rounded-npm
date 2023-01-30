@@ -5,11 +5,14 @@ import styles from "./index.module.scss";
 
 export default function LateralNavbar({
   packageName,
+  packageVersion,
 }: {
   packageName: string;
+  packageVersion: string;
 }) {
   const handlePackageInstall = () => {
-    navigator.clipboard.writeText(`npm install ${packageName}`);
+    let version = packageVersion === "latest" ? "" : `@${packageVersion}`;
+    navigator.clipboard.writeText(`npm install ${packageName}${version}`);
   };
 
   return (
@@ -24,7 +27,10 @@ export default function LateralNavbar({
           tabIndex={0}
         >
           <AiOutlineDownload />
-          <p>npm install {packageName}</p>
+          <p>
+            npm install {packageName}
+            {packageVersion === "latest" ? "" : `@${packageVersion}`}
+          </p>
         </div>
       </div>
     </aside>

@@ -13,13 +13,11 @@ interface Props {
 }
 
 export default function RootLayout({ children, params: { slug } }: Props) {
-  console.log('sec layout')
   return (
     <html lang="en">
       <head />
       <body className={inter.className}>
-        {slug.length === 1 && <Navbar />}
-
+        <Navbar />
         {children}
       </body>
     </html>
