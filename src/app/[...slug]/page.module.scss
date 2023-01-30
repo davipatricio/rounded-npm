@@ -22,11 +22,10 @@
       margin-left: 0px;
     }
 
-    .packagePrivacy {
-      &.public {
-        color: #00ff75;
-        font-size: 1.5rem;
-      }
+    .packagePrivacy.public {
+      user-select: none;
+      color: #00ff75;
+      font-size: 1.5rem;
     }
 
     .packageName,

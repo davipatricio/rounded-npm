@@ -3,6 +3,7 @@ interface PackagePageProps {
     packageName: string;
   };
 }
+
 export default function Head({ params }: PackagePageProps) {
   return (
     <>
