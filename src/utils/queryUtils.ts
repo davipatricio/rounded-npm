@@ -9,5 +9,7 @@ export async function getPackageInfo(name: string, version = "latest") {
   // if no tag found, try to get a version with value of version
   if (!versionInfo) versionInfo = data.versions[version];
 
-  return versionInfo;
+  const readme = versionInfo.readme ?? data.readme;
+
+  return { ...versionInfo, readme };
 }

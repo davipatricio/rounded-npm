@@ -4,6 +4,9 @@ import { getPackageInfo } from "@/utils/queryUtils";
 import { RawPackageManifest } from "query-registry";
 import { useEffect, useState } from "react";
 
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 import LateralNavbar from "../LateralNavbar";
 
 import styles from "./index.module.scss";
@@ -27,13 +30,14 @@ export default function PackageInfo({
     getPackageInfo(packageName, packageVersion)
       .then((data) => {
         if (data) setData(data);
+        console.log(data);
       })
       .catch(() => {
         setData((prev) => ({
           ...prev,
           version: "error",
           private: true,
-          description:
+          readme:
             "# 404 - This package does not exist on NPM registry or is private.",
         }));
         setError(true);
@@ -58,7 +62,9 @@ export default function PackageInfo({
 
       <div className={styles.packageContent}>
         <div className={styles.packageReadme}>
-          <h1>{data.description}</h1>
+          <ReactMarkdown skipHtml={true} remarkPlugins={[remarkGfm]}>
+            {data.readme ?? ""}
+          </ReactMarkdown>
         </div>
 
         <LateralNavbar
