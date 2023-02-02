@@ -12,9 +12,11 @@ export default function LateralNavbar({
   packageVersion: string;
 }) {
   const version = packageVersion === "latest" ? "" : `@${packageVersion}`;
+  const text = `npm install ${packageName}${version}`;
+
   const handlePackageInstall = useCallback(() => {
-    navigator.clipboard.writeText(`npm install ${packageName}${version}`);
-  }, [version, packageName]);
+    navigator.clipboard?.writeText(text);
+  }, [text]);
 
   return (
     <aside className={styles.lateral}>
@@ -28,10 +30,7 @@ export default function LateralNavbar({
           tabIndex={0}
         >
           <AiOutlineDownload />
-          <p>
-            npm install {packageName}
-            {version}
-          </p>
+          <p>{text}</p>
         </div>
       </div>
     </aside>
