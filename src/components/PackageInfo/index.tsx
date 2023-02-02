@@ -21,13 +21,23 @@ export default function PackageInfo({
     name: packageName,
     version: "loading",
   } as RawPackageManifest);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getPackageInfo(packageName, packageVersion)
       .then((data) => {
         if (data) setData(data);
       })
-      .catch(() => {});
+      .catch(() => {
+        setData((prev) => ({
+          ...prev,
+          version: "error",
+          private: true,
+          description:
+            "# 404 - This package does not exist on NPM registry or is private.",
+        }));
+        setError(true);
+      });
   }, [packageName, packageVersion]);
 
   const privacy = data.private ? "private" : "public";
@@ -48,12 +58,13 @@ export default function PackageInfo({
 
       <div className={styles.packageContent}>
         <div className={styles.packageReadme}>
-          <h1>{data.name}</h1>
+          <h1>{data.description}</h1>
         </div>
 
         <LateralNavbar
           packageName={data.name}
           packageVersion={packageVersion}
+          error={error ?? data.private}
         />
       </div>
     </main>

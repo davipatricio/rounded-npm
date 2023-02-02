@@ -7,9 +7,11 @@ import styles from "./index.module.scss";
 export default function LateralNavbar({
   packageName,
   packageVersion,
+  error,
 }: {
   packageName: string;
   packageVersion: string;
+  error: boolean;
 }) {
   const version = packageVersion === "latest" ? "" : `@${packageVersion}`;
   const text = `npm install ${packageName}${version}`;
@@ -19,7 +21,7 @@ export default function LateralNavbar({
     [text]
   );
 
-  return (
+  return !error ? (
     <aside className={styles.lateral}>
       <div className={styles.installCommand}>
         <p>Install</p>
@@ -37,5 +39,7 @@ export default function LateralNavbar({
         </div>
       </div>
     </aside>
+  ) : (
+    <></>
   );
 }
