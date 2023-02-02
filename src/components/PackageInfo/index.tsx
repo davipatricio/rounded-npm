@@ -30,7 +30,6 @@ export default function PackageInfo({
     getPackageInfo(packageName, packageVersion)
       .then((data) => {
         if (data) setData(data);
-        console.log(data);
       })
       .catch(() => {
         setData((prev) => ({
