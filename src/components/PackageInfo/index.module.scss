@@ -5,8 +5,10 @@
   margin-left: 56px;
 
   @media (max-width: 768px) {
+    margin: 0;
     margin-top: 37px;
-    margin-left: 0px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .packageInfo {
@@ -15,11 +17,14 @@
     justify-content: center;
     flex-direction: column;
     font-weight: bold;
-    margin-left: 56px;
+
+    // Center info on mobile
+    margin-left: auto;
+    margin-right: auto;
 
     @media (min-width: 768px) {
       width: 100%;
-      margin-left: 0px;
+      margin: 0;
     }
 
     .packagePrivacy {
@@ -51,8 +56,6 @@
 
   .packageContent {
     display: flex;
-    padding-left: 8px;
-    padding-right: 8px;
     gap: 59px;
 
     @media (max-width: 768px) {

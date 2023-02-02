@@ -14,9 +14,10 @@ export default function LateralNavbar({
   const version = packageVersion === "latest" ? "" : `@${packageVersion}`;
   const text = `npm install ${packageName}${version}`;
 
-  const handlePackageInstall = useCallback(() => {
-    navigator.clipboard?.writeText(text);
-  }, [text]);
+  const handlePackageInstall = useCallback(
+    () => navigator.clipboard?.writeText(text),
+    [text]
+  );
 
   return (
     <aside className={styles.lateral}>
