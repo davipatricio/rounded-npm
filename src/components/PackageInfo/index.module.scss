@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-top: 65px;
   margin-left: 56px;
+  padding-bottom: 40px;
 
   @media (max-width: 768px) {
     margin: 0;
@@ -76,9 +77,55 @@
       padding: 25px;
       width: 850px;
 
+      overflow: hidden;
+
       @media (max-width: 768px) {
         max-width: 850px;
         width: 100%;
+      }
+
+      * {
+        margin-top: 2px;
+        margin-bottom: 2px;
+      }
+
+      // select all "code" without attributes
+      code:not([class]) {
+        background-color: #363636;
+        color: #fff;
+        padding: 3px;
+        border-radius: 4px;
+      }
+
+      a, a code {
+        color: #e95c5c;
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        &::after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 1px;
+          background-color: #757575;
+          margin-top: 5px;
+          margin-bottom: 8px;
+        }
+      }
+
+      ul {
+        li {
+          margin-top: 10px;
+          margin-left: 20px;
+        }
       }
     }
   }
