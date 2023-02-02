@@ -1,5 +1,8 @@
+"use client";
+
 import { getPackageInfo } from "@/utils/queryUtils";
-import { notFound } from "next/navigation";
+import { RawPackageManifest } from "query-registry";
+import { useEffect, useState } from "react";
 
 import LateralNavbar from "../LateralNavbar";
 
@@ -10,16 +13,24 @@ interface Props {
   packageVersion: string | "latest";
 }
 
-export default async function PackageInfo({
+export default function PackageInfo({
   packageName,
   packageVersion = "latest",
 }: Props) {
-  const data = await getPackageInfo(packageName, packageVersion);
-  if (!data) return notFound();
+  const [data, setData] = useState({
+    name: packageName,
+    version: "loading",
+  } as RawPackageManifest);
 
-  const privacy = data ? (data.private ? "private" : "public") : "";
+  useEffect(() => {
+    getPackageInfo(packageName, packageVersion)
+      .then((data) => {
+        if (data) setData(data);
+      })
+      .catch(() => {});
+  }, [packageName, packageVersion]);
 
-  console.log(data);
+  const privacy = data.private ? "private" : "public";
 
   return (
     <main className={styles.container}>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import { AiOutlineDownload } from "react-icons/ai";
 import styles from "./index.module.scss";
 
@@ -10,10 +11,10 @@ export default function LateralNavbar({
   packageName: string;
   packageVersion: string;
 }) {
-  const handlePackageInstall = () => {
-    let version = packageVersion === "latest" ? "" : `@${packageVersion}`;
+  const version = packageVersion === "latest" ? "" : `@${packageVersion}`;
+  const handlePackageInstall = useCallback(() => {
     navigator.clipboard.writeText(`npm install ${packageName}${version}`);
-  };
+  }, [version, packageName]);
 
   return (
     <aside className={styles.lateral}>
@@ -29,7 +30,7 @@ export default function LateralNavbar({
           <AiOutlineDownload />
           <p>
             npm install {packageName}
-            {packageVersion === "latest" ? "" : `@${packageVersion}`}
+            {version}
           </p>
         </div>
       </div>

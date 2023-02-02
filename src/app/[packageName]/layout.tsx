@@ -6,13 +6,10 @@ import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
-  params: {
-    slug: string[];
-  };
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children, params: { slug } }: Props) {
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <head />
