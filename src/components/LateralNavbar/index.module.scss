@@ -27,14 +27,14 @@
       background-color: #d9d9d9;
       border-radius: 8px;
 
-      padding: 5px 0px 5px 9px;
+      padding: 26px 0px 26px 9px;
 
-      word-break: break-all;
       height: 45px;
       min-width: 322px;
 
       @media (min-width: 768px) {
         min-width: 500px;
+        padding: 5px 0px 5px 9px;
       }
 
       svg {
@@ -45,6 +45,7 @@
 
       p {
         font-size: 1.3rem;
+        word-break: keep-all;
       }
 
       &:hover {

@@ -25,7 +25,9 @@ export default function LateralNavbar({
         <div
           className={styles.box}
           onClick={handlePackageInstall}
-          onKeyDown={(e) => e.key === "Enter" && handlePackageInstall()}
+          onKeyDown={(e) =>
+            ["Enter", "Space"].includes(e.key) && handlePackageInstall()
+          }
           role="button"
           tabIndex={0}
         >
